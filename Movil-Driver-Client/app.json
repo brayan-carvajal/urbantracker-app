@@ -1,0 +1,74 @@
+{
+  "expo": {
+    "name": "UrbanTracker",
+    "slug": "UrbanTracker",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "auto",
+    "icon": "./assets/Logotipo.png",
+    "splash": {
+      "image": "./assets/Isotipo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff",
+      "tabletImage": "./assets/Isotipo.png",
+      "tabletResizeMode": "contain",
+      "tabletBackgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "experiments": {
+      "tsconfigPaths": true
+    },
+    "permissions": [
+      "ACCESS_COARSE_LOCATION",
+      "ACCESS_FINE_LOCATION"
+    ],
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Esta aplicación necesita acceso a tu ubicación para mostrarte conductores cercanos y calcular rutas."
+        }
+      ],
+      [
+        "expo-router",
+        {
+          "root": "./src/app"
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.UrbanTracker",
+      "splash": {
+        "image": "./assets/Isotipo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff",
+        "tabletImage": "./assets/Isotipo.png",
+        "tabletResizeMode": "contain",
+        "tabletBackgroundColor": "#ffffff"
+      }
+    },
+    "android": {
+      "package": "com.anonymous.UrbanTracker",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Isotipo.png",
+        "backgroundColor": "#000000"
+      },
+      "splash": {
+        "image": "./assets/Logotipo.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#000"
+      },
+      "statusBar": {
+        "translucent": true,
+        "backgroundColor": "#000000",
+        "barStyle": "dark-content"
+      }
+    }
+  }
+}
