@@ -51,6 +51,12 @@ export default function MqttProvider({
       // Configuraciones adicionales para estabilidad
       reschedulePings: true,
       queueQoSZero: false,
+      // Credenciales de autenticación
+      username: MQTT_CONFIG.BROKER_USERNAME,
+      password: MQTT_CONFIG.BROKER_PASSWORD,
+      // Configuración de permisos y reconexión
+      rejectUnauthorized: false, // Para desarrollo, en producción debe ser true con certificados válidos
+      reconnect: true,
     };
 
     console.log('⚙️ Opciones WebSocket:', JSON.stringify(options, null, 2));

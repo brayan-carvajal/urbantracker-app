@@ -17,7 +17,7 @@ export const useLocationTracking = () => {
   // Crear servicio de ubicación con MQTT real
   const createLocationService = () => {
     const wsConfig: WebSocketConfig = {
-      url: 'ws://10.3.235.231:8080/ws', // URL del backend para WebSocket de ubicación
+      url: 'ws://18.119.92.101:8080/ws', // URL del backend para WebSocket de ubicación
       reconnectInterval: 5000,
       maxReconnectAttempts: 5,
       heartbeatInterval: 30000,

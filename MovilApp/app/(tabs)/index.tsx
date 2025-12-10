@@ -48,10 +48,11 @@ export default function HomeScreen() {
 
   // Determinar si puede hacer tracking
   const canStartTracking = (): boolean => {
-    const hasVehicle = !!user?.vehicleId;
     const hasMqttConnection = mqttStatus === 'Conectado';
-    
-    return hasVehicle && hasMqttConnection;
+
+    // Permitir tracking si hay conexión MQTT, incluso sin vehículo asignado
+    // Esto permite pruebas y desarrollo
+    return hasMqttConnection;
   };
 
   // Obtener información de tracking

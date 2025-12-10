@@ -1,14 +1,18 @@
 // Configuración MQTT
 import Constants from 'expo-constants';
 
-const MQTT_HOST = (Constants.expoConfig?.extra?.mqttHost as string) || '10.3.235.231';
+const MQTT_HOST = (Constants.expoConfig?.extra?.mqttHost as string) || '18.119.92.101';
 const MQTT_PORT = (Constants.expoConfig?.extra?.mqttPort as number) || 9001;
+const MQTT_USERNAME = (Constants.expoConfig?.extra?.mqttUsername as string) || 'urban_driver';
+const MQTT_PASSWORD = (Constants.expoConfig?.extra?.mqttPassword as string) || 'driver@123';
 
 export const MQTT_CONFIG = {
   // Broker configuration
   BROKER_URL: `ws://${MQTT_HOST}:${MQTT_PORT}`,
   BROKER_HOST: MQTT_HOST,
   BROKER_PORT: MQTT_PORT,
+  BROKER_USERNAME: MQTT_USERNAME,
+  BROKER_PASSWORD: MQTT_PASSWORD,
 
   // Client configuration
   CLIENT_ID_PREFIX: 'mobile_driver_',
@@ -29,6 +33,39 @@ export const MQTT_CONFIG = {
     DRIVER_RECORRIDO: 'driver/recorrido',
     // USER_LOCATION ahora es dinámico basado en routeId
     // Se genera como: route/{routeId}
+    LOCATION_TELEMETRY: (routeId: string) => `routes/${routeId}/telemetry`,
+    VEHICLE_TELEMETRY: (vehicleId: string) => `vehicles/${vehicleId}/telemetry`,
+    DEFAULT_TELEMETRY: 'routes/default/telemetry',
+  },
+
+  // Permisos y configuración de seguridad
+  PERMISSIONS: {
+    // Topics permitidos para publicación
+    ALLOWED_PUBLISH_TOPICS: [
+      'driver/status',
+      'driver/recorrido',
+      'routes/+/telemetry',
+      'vehicles/+/telemetry',
+      'routes/default/telemetry'
+    ],
+    // Topics permitidos para suscripción
+    ALLOWED_SUBSCRIBE_TOPICS: [
+      'driver/status',
+      'driver/recorrido',
+      'routes/+/telemetry',
+      'vehicles/+/telemetry',
+      'routes/default/telemetry'
+    ],
+    // Configuración de seguridad
+    REQUIRE_AUTHENTICATION: true,
+    USE_SSL: true, // Habilitado para producción
+    SSL_CONFIG: {
+      rejectUnauthorized: false, // Para desarrollo, en producción debe ser true con certificados válidos
+      protocol: 'wss',
+      ca: undefined, // Certificado CA para producción
+      cert: undefined, // Certificado de cliente para producción
+      key: undefined // Clave privada para producción
+    }
   },
 
   // Message types
